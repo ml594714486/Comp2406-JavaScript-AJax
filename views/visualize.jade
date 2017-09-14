@@ -1,0 +1,27 @@
+extends layout
+
+block header
+  script(src="javascripts/jquery-1.12.1.js")
+  script(src="javascripts/Chart.js")
+
+block content
+  h1= title
+
+  h2 The Query
+
+  ul
+    each q, s in query
+      li #{s} = "#{q['$regex']}"
+  
+  h2 The Graph
+    
+  center
+    canvas(id="myChart", width="400", height="400")
+  script!= theData
+  script.
+    var ctx = $("#myChart").get(0).getContext("2d");
+    var myBarChart = new Chart(ctx).Bar(data, {});
+
+  p
+  
+  a(href="/") Home

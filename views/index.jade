@@ -1,0 +1,46 @@
+extends layout
+block header
+  link(rel='stylesheet', href="/stylesheets/uploadfile.css")
+  script(src="/javascripts/jquery.form.js")
+  script(src="javascripts/jquery.uploadfile.js")
+  script(src="/javascripts/Chart.js")
+  script(src="javascripts/account.js")
+  script(src="javascripts/FileSaver.js")
+
+block content
+  h1= title
+
+  p#stats Currently we have #{numFiles} log files to analyze containing #{numEntries} entries.
+
+  h2 Log Query
+    fieldset
+      div
+        label Message?
+        input#message(type="text", name="message")
+      div
+        label Service?
+        input#service(type="text", name="service")
+      div
+        label File?
+        input#file(type="text", name="file")
+      div
+        label Month?
+        input#month(type="text", name="month")
+      div
+        label Day?
+        input#day(type="text", name="day")
+      div
+        label Output Type:
+        select(id="queryType", name="queryType")
+          option(value="show", selected) Show
+          option(value="visualize") Visualize
+          option(value="download") Download
+    br
+    button#submitQuery Submit Log Query
+    div
+      ul#fileList
+    div#fileuploader
+    
+    textarea#box(row="200", cols="100")
+    
+    
